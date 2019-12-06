@@ -10,21 +10,12 @@ namespace SecurityDemoWindows.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
+            string someText = "<bold>XSS test</bold>";
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.one = someText;
 
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+        
     }
 }
