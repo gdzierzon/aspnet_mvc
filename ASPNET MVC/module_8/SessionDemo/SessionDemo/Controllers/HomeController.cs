@@ -8,21 +8,9 @@ namespace SessionDemo.Controllers
 {
     public class HomeController : Controller
     {
-        private List<string> myList;
-
-        public HomeController()
-        {
-            //myList = Session["list"] as List<string>;
-            //if (myList == null)
-            //{
-            //    myList = new List<string>();
-            //    Session["list"] = myList;
-            //}
-        }
-
         public ActionResult Index()
         {
-
+            //reading a cookie demo
             HttpCookie cookie = Request.Cookies["item"];
             if (cookie != null)
             {
@@ -31,6 +19,14 @@ namespace SessionDemo.Controllers
             else
             {
                 ViewBag.Item = "not set";
+            }
+
+            //reading from session
+            var myList = Session["list"] as List<string>;
+            if (myList == null)
+            {
+                myList = new List<string>();
+                Session["list"] = myList;
             }
 
             return View(myList);
@@ -44,11 +40,21 @@ namespace SessionDemo.Controllers
         [HttpPost]
         public ActionResult AddItem(string item)
         {
+            //writing to cookie
             HttpCookie myCookie = new HttpCookie("item");
             myCookie.Value = item;
             Response.Cookies.Add(myCookie);
 
-            //myList.Add(item);
+            //writing to session
+            var myList = Session["list"] as List<string>;
+            if (myList == null)
+            {
+                myList = new List<string>();
+                Session["list"] = myList;
+            }
+            myList.Add(item);
+
+
             return RedirectToAction("Index");
         }
 
