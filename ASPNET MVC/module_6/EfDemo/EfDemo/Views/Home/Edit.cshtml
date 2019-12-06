@@ -1,0 +1,29 @@
+﻿@model EfDemo.Models.Data.author
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h1>Add New Author</h1>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        @Html.LabelFor(m => m.au_fname)
+        @Html.TextBoxFor(m => m.au_fname, new {@class = "form-control"})
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.au_lname)
+        @Html.TextBoxFor(m => m.au_lname, new { @class = "form-control" })
+    </div>
+    <div class="row">
+        @Html.LabelFor(m => m.phone)
+        @Html.TextBoxFor(m => m.phone, new { @class = "form-control" })
+    </div>
+    <div class="row">
+                @Html.HiddenFor(m => m.au_id)
+                @Html.HiddenFor(m => m.city)
+        <button type="submit" class="btn btn-warning">Update</button>
+    </div>
+}
+

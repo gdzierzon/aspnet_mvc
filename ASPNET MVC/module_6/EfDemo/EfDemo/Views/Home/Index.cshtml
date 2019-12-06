@@ -1,0 +1,29 @@
+﻿@model List<EfDemo.Models.Data.author>
+
+@{
+    ViewBag.Title = "Author List";
+}
+
+<h1>Author List</h1>
+
+<div>@Html.ActionLink("Add Author","Create")</div>
+
+<table class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Phone</th>
+        <th></th>
+    </tr>
+    </thead>
+    @foreach (var author in Model)
+    {
+        <tr>
+            <td>@author.au_lname</td>
+            <td>@author.au_fname</td>
+            <td>@author.phone</td>
+            <td>@Html.ActionLink("Edit","Edit",new {id = @author.au_id})</td>
+        </tr>
+    }
+</table>

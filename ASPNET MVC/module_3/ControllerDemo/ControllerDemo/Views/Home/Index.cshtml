@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@{
+    Html.BeginForm();
+    <p>Number 1: @Html.TextBox("number1")</p>
+
+    <p>Number 2: @Html.TextBox("number2")</p>
+
+    <p>
+        Operation:
+        @Html.DropDownList("choice", 
+                           new SelectList(
+                               new string[] {"Add", "Subtract"}
+                               ))
+
+    </p>
+
+    <p><input type="submit" value="Calculate"/></p>
+    Html.EndForm();
+
+}

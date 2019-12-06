@@ -1,0 +1,47 @@
+﻿@using ModelsDemo.Models
+@model IEnumerable<ModelsDemo.Models.Calculator>
+
+@{
+    ViewBag.Title = "View";
+    IEnumerable<Calculator> calculators = Model;
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberOne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberTwo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Operation)
+        </th>
+        <th>
+            Answer
+        </th>
+    </tr>
+
+@foreach (var item in calculators) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberOne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumberTwo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Operation)
+        </td>
+        <td>
+            @item.Calculate()
+        </td>
+    </tr>
+}
+
+</table>

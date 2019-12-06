@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<ul>
+    <li>@Html.ActionLink("Action Link", "Entry", new { username = "johnny", date = "2019-12-5" })</li>
+    <li>@Html.RouteLink("Blog Entry for Johnny", "Blog", new { username = "johnny", date = "2019-12-5" })</li>
+</ul>

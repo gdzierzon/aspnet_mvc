@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Demo";
+}
+
+<h1>HTML Helpers Demo</h1>
+
+@{
+    SelectListItem[] options = new SelectListItem[5];
+
+    for (int i = 0; i < 5; i++)
+    {
+        SelectListItem item = new SelectListItem
+                              {
+                                  Text = $"Item {i}",
+                                  Value = i.ToString()
+                              };
+        options[i] = item;
+    }
+}
+
+
+
+@*option 3*@
+@using (Html.BeginForm())
+{
+    <div class="row">
+        @Html.TextBox("firstName")
+        <input type="text" id="firstName" name="firstName"/>
+    </div>
+
+    <div class="row">
+        @Html.RadioButton("superhero", "spiderman") Spiderman<br />
+        @Html.RadioButton("superhero", "superman") Superman<br />
+    </div>
+
+    <div class="row">
+        @Html.DropDownList("myItems",options, new {size = 4})
+    </div>
+
+    <div class="row">
+        @Html.ListBox("listBox", new MultiSelectList(new string[] {"one","two","three"}), new { size = 4 })
+    </div>
+}
+
+<ul>
+    <li>
+        <a href="/Home/Index" class="link" target="blank" >Home</a>
+    </li>
+    <li>
+        <a href="@Url.Action("Index","Home")">
+            <img src=""/>
+        </a>
+    </li>
+    <li>
+        @Html.ActionLink("Home","Index")
+    </li>
+    <li>
+        @Html.ActionLink("Home"
+                         ,"Details"
+                         , "Order"
+                         , new {id=12}
+                         , new {target = "_blank", @class = "link", id="orderLink"})
+    </li>
+</ul>

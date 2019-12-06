@@ -1,0 +1,65 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using System.Web.UI.WebControls
+@{
+    ViewBag.Title = "Welcome to My Home Page";
+
+    string product = ViewBag.Item;
+    decimal cost = ViewBag.Cost;
+    string payment = ViewBag.PaymentMethod;
+    string card = ViewBag.Card;
+    string expiration = ViewBag.Expiration;
+
+    string[] names = ViewBag.Names;
+}
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<h5>Product Information</h5>
+
+<h1>Product Name: @product</h1>
+<h3>Cost: @cost.ToString("C")</h3>
+
+@{
+    if (card == "AmEx")
+    {
+
+    }
+}
+
+<h1>Names List</h1>
+<ul>
+    @foreach (var name in names)
+    {
+        <li>@name</li>
+    }
+</ul>
+
+<table>
+    <tr>
+        <th>Name</th>
+    </tr>
+    @foreach (var name in names)
+    {
+        <tr>
+            <td>@name</td>
+        </tr>
+    }
+</table>
+
+<h1>If Statement</h1>
+<h3>@payment</h3>
+@if (payment.Equals("MasterCard"))
+{
+    @:Thank you
+    <span style="font-weight: bold">Thank you for choosing MasterCard</span>
+
+}
+else
+{
+    <span>have you thought about MasterCard?</span>
+}
+
+
