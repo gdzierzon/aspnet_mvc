@@ -8,6 +8,7 @@ namespace SessionDemo.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             //reading a cookie demo
