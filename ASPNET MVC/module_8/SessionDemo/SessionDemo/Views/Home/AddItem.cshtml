@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "AddItem";
+}
+
+<h2>AddItem</h2>
+@using (Html.BeginForm())
+{
+    @Html.TextBox("item")
+    <button type="submit">Add Item</button>
+}
+

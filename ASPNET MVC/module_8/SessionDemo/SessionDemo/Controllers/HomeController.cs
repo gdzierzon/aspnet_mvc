@@ -8,23 +8,50 @@ namespace SessionDemo.Controllers
 {
     public class HomeController : Controller
     {
+        private List<string> myList;
+
+        public HomeController()
+        {
+            //myList = Session["list"] as List<string>;
+            //if (myList == null)
+            //{
+            //    myList = new List<string>();
+            //    Session["list"] = myList;
+            //}
+        }
+
         public ActionResult Index()
         {
-            return View();
+
+            HttpCookie cookie = Request.Cookies["item"];
+            if (cookie != null)
+            {
+                ViewBag.Item = cookie.Value;
+            }
+            else
+            {
+                ViewBag.Item = "not set";
+            }
+
+            return View(myList);
         }
 
-        public ActionResult About()
+        public ActionResult AddItem()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
+        [HttpPost]
+        public ActionResult AddItem(string item)
         {
-            ViewBag.Message = "Your contact page.";
+            HttpCookie myCookie = new HttpCookie("item");
+            myCookie.Value = item;
+            Response.Cookies.Add(myCookie);
 
-            return View();
+            //myList.Add(item);
+            return RedirectToAction("Index");
         }
+
+        
     }
 }
